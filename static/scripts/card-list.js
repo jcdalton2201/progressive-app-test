@@ -3,7 +3,9 @@ class CardList extends HTMLElement{
   createdCallback()  {
     this.cities = ['London,uk','Dallas','Rome,it','Chicago','Munich'];
     this.fetchWeather();
-    // this.buildList();
+    Rx.Observable.fromEvent(document,'backgroundSync').subscribe((evt)=>{
+      this.fetchWeather(true);
+    });
     const removeCard = Rx.Observable.fromEvent(document, 'removeCard');
     removeCard.subscribe((evt) =>{
       let nextItem = false;
@@ -38,16 +40,16 @@ class CardList extends HTMLElement{
       });
     });
   }
-  fetchWeather(){
+  fetchWeather(sync){
     const weather = new WeatherApi();
     Rx.Observable.from(this.cities).subscribe((city) =>{
-      const weatherSub = weather.getWeather(city);
+      const weatherSub = weather.getWeather(city,sync);
       weatherSub.subscribe(
         (data)=> {
           this.buildCard(data);
         },
         (error)=> {
-          console.log(error);
+          console.error(error);
         },
         ()=> {
         });

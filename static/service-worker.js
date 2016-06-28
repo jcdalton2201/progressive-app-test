@@ -10,29 +10,39 @@ var filesToCache = [
   '/styles/inline.css',
   'https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js'
 ];
+const fetchInBackground = function(request, sync){
+  if(sync){
+    console.log('we have sync');
+    return;
+  }
+  fetch(request.url).then((data)=>{
+    addToCache(request.url);
+    this.clients.matchAll().then((clients)=>{
+      clients.map((client)=>{
+        client.postMessage('background sync');
+      });
+    });
+  });
+}
 const addToCache = function(request) {
   caches.open(cacheName).then(function(cache) {
-    console.log('adding a request',request);
+
     return cache.add(request);
   });
 }
 self.addEventListener('install', function(e) {
-  console.log('[ServiceWorker] Install');
   e.waitUntil(
     caches.open(cacheName).then(function(cache) {
-      console.log('[ServiceWorker] Caching app shell');
       return cache.addAll(filesToCache);
     })
   );
 });
 
 self.addEventListener('activate', function(e) {
-  console.log('[ServiceWorker] Activate');
   e.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
         if (key !== cacheName) {
-          console.log('[ServiceWorker] Removing old cache', key);
           return caches.delete(key);
         }
       }));
@@ -41,15 +51,21 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {
-  console.log('[ServiceWorker] Fetch', e.request.url);
-  const host = new URL(e.request.url).hostname;
+  const fUrl = new URL(e.request.url)
+  const host = fUrl.pathname;
+  const query = fUrl.searchParams;
+  const sync = query.get('sync');
+  console.log('sync',sync);
     e.respondWith(
       caches.match(e.request).then(function(response) {
         if(response) {
+          if(host.startsWith('/data/')){
+            fetchInBackground(e.request, sync);
+          }
           return response;
         }
         else {
-          if(host === 'api.openweathermap.org'){
+          if(host.startsWith('/data/')){
             addToCache(e.request);
           }
           return fetch(e.request);
