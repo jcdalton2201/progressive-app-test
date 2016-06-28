@@ -96,7 +96,7 @@ class Card extends HTMLElement {
     this.target = null;
   }
   createdCallback ()  {
-    console.log('Create the element');
+    // console.log('Create the element');
     //parmas
     this.targetBCR = null;
     this.target = null;

@@ -6,9 +6,16 @@ var filesToCache = [
   '/scripts/app.js',
   '/scripts/card-list.js',
   '/scripts/card.js',
-  '/styles/inline.css'
+  '/scripts/weather-api.js',
+  '/styles/inline.css',
+  'https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js'
 ];
-
+const addToCache = function(request) {
+  caches.open(cacheName).then(function(cache) {
+    console.log('adding a request',request);
+    return cache.add(request);
+  });
+}
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install');
   e.waitUntil(
@@ -35,9 +42,18 @@ self.addEventListener('activate', function(e) {
 
 self.addEventListener('fetch', function(e) {
   console.log('[ServiceWorker] Fetch', e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
+  const host = new URL(e.request.url).hostname;
+    e.respondWith(
+      caches.match(e.request).then(function(response) {
+        if(response) {
+          return response;
+        }
+        else {
+          if(host === 'api.openweathermap.org'){
+            addToCache(e.request);
+          }
+          return fetch(e.request);
+        }
+      })
+    );
 });

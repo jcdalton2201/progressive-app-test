@@ -1,7 +1,7 @@
 'use strict';
 class CardList extends HTMLElement{
   createdCallback()  {
-    this.cities = ['London,uk','Dallas','Rome,it','Chicago','Munich','st joseph,mo,usa'];
+    this.cities = ['London,uk','Dallas','Rome,it','Chicago','Munich'];
     this.fetchWeather();
     // this.buildList();
     const removeCard = Rx.Observable.fromEvent(document, 'removeCard');
@@ -44,34 +44,31 @@ class CardList extends HTMLElement{
       const weatherSub = weather.getWeather(city);
       weatherSub.subscribe(
         (data)=> {
-          console.log(data);
           this.buildCard(data);
         },
         (error)=> {
           console.log(error);
         },
         ()=> {
-          console.log('done');
         });
     });
   }
   buildCard(weather){
     let icon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
     let item = `<ui-card data='fine'>
-      <h1>${weather.name} <img src='${icon}'></h1>
       <div>
-        <div>
-        <div>
-        ${weather.weather[0].description}
+        <div class='header'>
+          <div>${weather.name}</div>
         </div>
-          <div>Temp : ${weather.main.temp} F</div>
-          <div>High : ${weather.main.temp_max} F</div>
-          <div>Low : ${weather.main.temp_min} F</div>
+        <div class='body'>
+          <div class='img'><img src='${icon}'></div>
+          <div class='desBody'>
+           <div class='descriptionDiv'>${weather.weather[0].description}</div>
+           <div  class='descriptionDiv'>Temp : ${weather.main.temp} F</div>
+           <div  class='descriptionDiv'>${weather.main.temp_max} - ${weather.main.temp_min}</div>
+          </div>
         </div>
-        <div>
-
-        </div>
-      <div>
+      </div>
     </ui-card>`;
     this.innerHTML =  this.innerHTML + item;
   }
