@@ -54,7 +54,10 @@ class CardList extends HTMLElement{
     });
   }
   buildCard(weather){
-    let icon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
+    if(weather.weather[0].icon === '04d') {
+      weather.weather[0].icon = '02d';
+    }
+    let icon = `images/icons/${weather.weather[0].icon}.svg`
     let item = `<ui-card data='fine'>
       <div>
         <div class='header'>
