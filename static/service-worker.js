@@ -1,5 +1,5 @@
-var dataCacheName = 'weatherData-v1';
-var cacheName = 'weatherPWA-step-6-1';
+var dataCacheName = 'weatherData-v2';
+var cacheName = 'weatherPWA-2';
 var filesToCache = [
   '/',
   '/index.html',
@@ -12,7 +12,6 @@ var filesToCache = [
 ];
 const fetchInBackground = function(request, sync){
   if(sync){
-    console.log('we have sync');
     return;
   }
   fetch(request.url).then((data)=>{
@@ -55,7 +54,6 @@ self.addEventListener('fetch', function(e) {
   const host = fUrl.pathname;
   const query = fUrl.searchParams;
   const sync = query.get('sync');
-  console.log('sync',sync);
     e.respondWith(
       caches.match(e.request).then(function(response) {
         if(response) {

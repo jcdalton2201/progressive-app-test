@@ -1,5 +1,12 @@
 'use strict';
 class Card extends HTMLElement {
+  getTarget(e){
+    if (e.tagName !== 'UI-CARD'){
+      return this.getTarget(e.parentElement);
+    } else {
+      return e;
+    }
+  }
   onMove(e) {
     if (!this.target)
       return;
@@ -25,7 +32,9 @@ class Card extends HTMLElement {
       return;
     }
     if(e.target.tagName !== 'UI-CARD'){
-      this.target = e.target.parentElement;
+      this.target = this.getTarget(e.target.parentElement);
+      console.log(e.target.parentElement);
+      // this.target = e.target.parentElement;
     } else {
       this.target = e.target;
     }

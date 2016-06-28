@@ -3,7 +3,8 @@ class CardList extends HTMLElement{
   createdCallback()  {
     this.cities = ['London,uk','Dallas','Rome,it','Chicago','Munich'];
     this.fetchWeather();
-    Rx.Observable.fromEvent(document,'backgroundSync').subscribe((evt)=>{
+    Rx.Observable.fromEvent(document,'backgroundSync').throttle(1000 /* ms */).subscribe((evt)=>{
+      this.innerHTML = '';
       this.fetchWeather(true);
     });
     const removeCard = Rx.Observable.fromEvent(document, 'removeCard');
@@ -56,12 +57,13 @@ class CardList extends HTMLElement{
     });
   }
   buildCard(weather){
-    if(weather.weather[0].icon === '04d') {
+    if(weather.weather[0].icon === '04d' ||weather.weather[0].icon === '03d') {
       weather.weather[0].icon = '02d';
     }
+    weather.weather[0].icon = weather.weather[0].icon.replace('n','d');
     let icon = `images/icons/${weather.weather[0].icon}.svg`
     let item = `<ui-card data='fine'>
-      <div>
+      <div class='card'>
         <div class='header'>
           <div>${weather.name}</div>
         </div>
