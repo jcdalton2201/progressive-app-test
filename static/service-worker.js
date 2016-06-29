@@ -8,12 +8,12 @@ var filesToCache = [
   '/scripts/card.js',
   '/scripts/weather-api.js',
   '/styles/inline.css',
-  '/icons/01d.svg',
-  '/icons/02d.svg',
-  '/icons/09d.svg',
-  '/icons/10d.svg',
-  '/icons/11d.svg',
-  '/icons/13d.svg',
+  '/images/icons/01d.svg',
+  '/images/icons/02d.svg',
+  '/images/icons/09d.svg',
+  '/images/icons/10d.svg',
+  '/images/icons/11d.svg',
+  '/images/icons/13d.svg',
   'https://fonts.googleapis.com/css?family=Kaushan+Script',
   'https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js'
 ];
@@ -21,7 +21,9 @@ const fetchInBackground = function(request, sync){
   if(sync){
     return;
   }
+
   fetch(request.url).then((data)=>{
+    console.log('we are done with call');
     addToCache(request.url);
     this.clients.matchAll().then((clients)=>{
       clients.map((client)=>{
@@ -64,9 +66,11 @@ self.addEventListener('fetch', function(e) {
     e.respondWith(
       caches.match(e.request).then(function(response) {
         if(response) {
+          console.log('start');
           if(host.startsWith('/data/')){
             fetchInBackground(e.request, sync);
           }
+          console.log('end');
           return response;
         }
         else {
