@@ -15,7 +15,7 @@ var filesToCache = [
   '/images/icons/11d.svg',
   '/images/icons/13d.svg',
   'https://fonts.googleapis.com/css?family=Kaushan+Script',
-  'https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js'
+  'https://npmcdn.com/@reactivex/rxjs@5.0.0-beta.9/dist/global/Rx.umd.js'
 ];
 const fetchInBackground = function(request, sync){
   if(sync){
