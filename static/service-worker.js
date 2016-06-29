@@ -8,6 +8,13 @@ var filesToCache = [
   '/scripts/card.js',
   '/scripts/weather-api.js',
   '/styles/inline.css',
+  '/icons/01d.svg',
+  '/icons/02d.svg',
+  '/icons/09d.svg',
+  '/icons/10d.svg',
+  '/icons/11d.svg',
+  '/icons/13d.svg',
+  'https://fonts.googleapis.com/css?family=Kaushan+Script',
   'https://npmcdn.com/@reactivex/rxjs/dist/global/Rx.umd.js'
 ];
 const fetchInBackground = function(request, sync){
