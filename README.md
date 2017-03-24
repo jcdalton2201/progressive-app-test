@@ -1,6 +1,6 @@
 # progressive-app-test
 
-```yaml
+```wiki
 test
   test1
 ```
