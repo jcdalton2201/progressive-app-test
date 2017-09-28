@@ -44,11 +44,11 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "6bcdf50951702f63310ad68541964c48"
+    "revision": "491936ef2d37049020e47c338eb535aa"
   },
   {
     "url": "manifest.json",
-    "revision": "6d7536f70f8802c6e2c0587516764154"
+    "revision": "ab2c5cff85f54fa42b80323bde420e4a"
   },
   {
     "url": "weather-web.926730205fb0a3795bf45803e7b65c4db570b8048aaabf2814bc25c20340ad15.js",
