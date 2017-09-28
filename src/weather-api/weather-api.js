@@ -1,7 +1,7 @@
 export class WeatherApi {
   constructor() {
     // this.host ='/data/2.5/weather';
-    this.host ='http://api.openweathermap.org/data/2.5/weather';
+    this.host ='https://api.openweathermap.org/data/2.5/weather';
     this.key = '09cb1869de193f4ffe078d9053a7e0ad';
   }
   getWeather(city,sync){

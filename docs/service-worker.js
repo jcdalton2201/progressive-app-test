@@ -44,19 +44,19 @@ const fileManifest = [
   },
   {
     "url": "index.html",
-    "revision": "5ca41e5ea6a7cde0f259de77f2ea4a5a"
+    "revision": "be2e8958c23d856df1f0c21149f7ac43"
   },
   {
     "url": "manifest.json",
     "revision": "6d7536f70f8802c6e2c0587516764154"
   },
   {
-    "url": "weather-web.7b01148fcc9f938519784b59c96cba96f18ca93780fb59089f4620c8af5e1ebb.js",
-    "revision": "69ef9258e111f7118910b8acd2bda115"
+    "url": "weather-web.926730205fb0a3795bf45803e7b65c4db570b8048aaabf2814bc25c20340ad15.js",
+    "revision": "19ada2f4214f63a6ee446a652789c2ee"
   },
   {
-    "url": "weather-web.7b01148fcc9f938519784b59c96cba96f18ca93780fb59089f4620c8af5e1ebb.js.map",
-    "revision": "44c3f6ad3423a9af049631fdf5d651cd"
+    "url": "weather-web.926730205fb0a3795bf45803e7b65c4db570b8048aaabf2814bc25c20340ad15.js.map",
+    "revision": "4799ca1c9e466ad63a956717f23b69a5"
   },
   {
     "url": "workbox-sw.prod.v2.0.3.js.map",
