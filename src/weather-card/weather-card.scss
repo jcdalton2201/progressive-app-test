@@ -1,0 +1,46 @@
+.main {
+  margin: 5px;
+  box-shadow: #eaeaea 2px 2px 2px 2px;
+  max-width: 400px;
+  border: #a2aaaa 1px solid;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3rem 5rem 40px;
+  grid-template-areas:
+  "header header header"
+  "temp temp icon"
+  "wind humidity presure";
+  .header {
+    grid-area: header;
+    font-size: 3rem;
+  }
+  .info {
+    font-size: 5rem;
+    grid-area: temp;
+  }
+  .icon {
+    grid-area: icon;
+    img {
+      height: 5rem;
+    }
+  }
+  .wind {
+    grid-area: wind;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .humidity {
+    grid-area: humidity;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pressure {
+    grid-area: presure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

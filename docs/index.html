@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sandbox for FS-Cannon.">
+    <meta name="viewport" content="width=device-width, minimum-scale=1,initial-scale=1">
+    <meta name='theme-color' content="#009900">
+    <link rel="manifest" href="manifest.json">
+    <title>Weather APP</title>
+  </head>
+  <body>
+    <header>
+      Weather
+    </header>
+    <weather-app>
+    </weather-app>
+    <noscript>
+      This app requires javascript to be turn on!
+    </noscript>
+  </body>
+  <script type="text/javascript">
+  if('serviceWorker' in navigator){
+      navigator.serviceWorker
+        .register('./service-worker.js')
+        .then(() =>{});
+      navigator.serviceWorker.addEventListener('message', (event) =>{
+        console.log(event);
+      });
+    }
+  </script>
+  <script src="/weather-web.7b01148fcc9f938519784b59c96cba96f18ca93780fb59089f4620c8af5e1ebb.js" charset="utf-8"></script>
+</html>
