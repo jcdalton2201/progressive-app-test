@@ -1,23 +1,43 @@
 importScripts('workbox-sw.prod.v2.0.3.js');
 
-/**
- * DO NOT EDIT THE FILE MANIFEST ENTRY
- *
- * The method precache() does the following:
- * 1. Cache URLs in the manifest to a local cache.
- * 2. When a network request is made for any of these URLs the response
- *    will ALWAYS comes from the cache, NEVER the network.
- * 3. When the service worker changes ONLY assets with a revision change are
- *    updated, old cache entries are left as is.
- *
- * By changing the file manifest manually, your users may end up not receiving
- * new versions of files because the revision hasn't changed.
- *
- * Please use workbox-build or some other tool / approach to generate the file
- * manifest which accounts for changes to local files and update the revision
- * accordingly.
- */
-const fileManifest = [
+const workboxSW = new self.WorkboxSW();
+workboxSW.precache([
+  {
+    "url": "images/icons/01d.svg",
+    "revision": "8152c97ff4e8f9659ee77cfcf2bfeb32"
+  },
+  {
+    "url": "images/icons/01n.svg",
+    "revision": "b5962829bece937542003079532aea21"
+  },
+  {
+    "url": "images/icons/02d.svg",
+    "revision": "57d93156cc146a18c71eb56e69a0ba93"
+  },
+  {
+    "url": "images/icons/09d.svg",
+    "revision": "7bf10b8c7472000c0c567f7780b4834e"
+  },
+  {
+    "url": "images/icons/10d.svg",
+    "revision": "d46687c95b18a3d5fedab4cf89d23222"
+  },
+  {
+    "url": "images/icons/11d.svg",
+    "revision": "199d246fa0057760966720c4247425dc"
+  },
+  {
+    "url": "images/icons/13d.svg",
+    "revision": "84844d348cafb07b6eb43b4e6b72508a"
+  },
+  {
+    "url": "images/icons/compass.svg",
+    "revision": "efc103f529215ac3978fa44a120edf1c"
+  },
+  {
+    "url": "images/icons/heat.svg",
+    "revision": "79b885404f791bdf90cc57c00a180ebe"
+  },
   {
     "url": "images/icons/icon-128x128.png",
     "revision": "b1b0f7b8adb5bb5568c370b1c8af29e9"
@@ -43,26 +63,48 @@ const fileManifest = [
     "revision": "940d8b2f15cc3bee9e6997f9408bbea7"
   },
   {
+    "url": "images/icons/thermometer.svg",
+    "revision": "f7d0c98911756b4894c75a877081be5b"
+  },
+  {
+    "url": "images/icons/tornado.svg",
+    "revision": "2fff6568aa0f510a9c1a37bd6d6d39e4"
+  },
+  {
+    "url": "images/icons/wind.svg",
+    "revision": "c3e662b66ae4e97b5dcc6b1dd03b1c67"
+  },
+  {
     "url": "index.html",
-    "revision": "491936ef2d37049020e47c338eb535aa"
+    "revision": "573dc94c8ef1381ce0edfaea54ba5713"
   },
   {
     "url": "manifest.json",
     "revision": "ab2c5cff85f54fa42b80323bde420e4a"
   },
   {
-    "url": "weather-web.926730205fb0a3795bf45803e7b65c4db570b8048aaabf2814bc25c20340ad15.js",
+    "url": "service-worker.js",
+    "revision": "121388c936993f8ced8055e2939ca83d"
+  },
+  {
+    "url": "weather-web.95adaf8382225e3b24280000d485a1a3db3e6fe782759d0334088756c62d7179.js",
     "revision": "19ada2f4214f63a6ee446a652789c2ee"
   },
   {
-    "url": "weather-web.926730205fb0a3795bf45803e7b65c4db570b8048aaabf2814bc25c20340ad15.js.map",
-    "revision": "4799ca1c9e466ad63a956717f23b69a5"
+    "url": "weather-web.95adaf8382225e3b24280000d485a1a3db3e6fe782759d0334088756c62d7179.js.map",
+    "revision": "c20f82f3c2a608310d4bffe750ae07cb"
+  },
+  {
+    "url": "workbox-sw.prod.v2.0.3.js",
+    "revision": "60b4da760c6a02cbbf5efc80c4da7090"
   },
   {
     "url": "workbox-sw.prod.v2.0.3.js.map",
     "revision": "885cfe847c003220cb276a98321c5f61"
   }
-];
+]);
 
-const workboxSW = new self.WorkboxSW();
-workboxSW.precache(fileManifest);
+workboxSW.router.registerRoute(
+  'https://api.openweathermap.org/data/2.5/weather(.*)',
+  workboxSW.strategies.staleWhileRevalidate()
+);

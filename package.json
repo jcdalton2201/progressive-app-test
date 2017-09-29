@@ -13,7 +13,7 @@
     "workbox": "workbox generate:sw",
     "prebuild-docs": "npm run ugly",
     "build-docs": "node ./scripts/buildProd.js",
-    "postbuild-docs": "workbox generate:sw",
+    "postbuild-docs": "workbox inject:manifest",
     "preugly": "npm run build",
     "sandbox": "browser-sync start -c ./sandbox-config.js",
     "ugly": "uglifyjs ./.temp/weather-web.js -o ./docs/weather-web.min.js --source-map"
@@ -52,5 +52,8 @@
     "watch": "^1.0.2",
     "webpack": "^3.6.0",
     "workbox-cli": "^2.0.3"
+  },
+  "dependencies": {
+    "workbox-sw": "^2.0.3"
   }
 }
