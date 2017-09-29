@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for weather-button.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> weather-button.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>7/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>7/7</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+class weatherButton extends HTMLElement {
+  constructor(){
+    super();
+    this._shadowRoot = this.attachShadow({mode: 'open'});
+  }
+  connectedCallback(){
+    this._shadowRoot.innerHTML = `&lt;style&gt;svg {
+  background-color: #128020;
+  border-radius: 50%;
+  cursor: pointer; }
+  svg:hover {
+    background-color: #3fc848; }
+  svg:active {
+    background-color: #ffdc24; }
+&lt;/style&gt;&lt;svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"&gt;
+&lt;style type="text/css"&gt;
+	.st0{fill:#263A48;}
+&lt;/style&gt;
+&lt;g &gt;
+	&lt;g  transform="translate(-384.000000, -193.000000)"&gt;
+		&lt;path  class="st0" d="M393.8,209.2h7.8v-0.7h-7.8V209.2z M393.8,206.6h7.8V206h-7.8V206.6z M393.8,204.1h7.8v-0.7h-7.8
+			V204.1z M393.8,201.5h7.8v-0.7h-7.8V201.5z M390.9,208.9c0-0.4,0.3-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8c0,0.4-0.3,0.8-0.8,0.8
+			C391.2,209.6,390.9,209.3,390.9,208.9L390.9,208.9z M390.9,206.3c0-0.4,0.3-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8
+			c0,0.4-0.3,0.8-0.8,0.8C391.2,207,390.9,206.7,390.9,206.3L390.9,206.3z M390.9,203.7c0-0.4,0.3-0.8,0.8-0.8
+			c0.4,0,0.8,0.4,0.8,0.8c0,0.4-0.3,0.8-0.8,0.8C391.2,204.5,390.9,204.2,390.9,203.7L390.9,203.7z M390.9,201.2
+			c0-0.4,0.3-0.8,0.8-0.8c0.4,0,0.8,0.4,0.8,0.8c0,0.4-0.3,0.8-0.8,0.8C391.2,201.9,390.9,201.6,390.9,201.2L390.9,201.2z"/&gt;
+	&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+`;
+    this.style['width'] = '54px';
+    this.style['height'] = '54px';
+  }
+  disconnectedCallback(){
+&nbsp;
+  }
+<span class="fstat-no" title="function not covered" >  at</span>tributeChangedCallback(){
+&nbsp;
+  }
+<span class="fstat-no" title="function not covered" >  ad</span>optedCallback(){
+&nbsp;
+  }
+&nbsp;
+}
+<span class="missing-if-branch" title="else path not taken" >E</span>if(!customElements.get('weather-button')){
+  customElements.define('weather-button', weatherButton);
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Sep 29 2017 14:08:04 GMT-0500 (CDT)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
