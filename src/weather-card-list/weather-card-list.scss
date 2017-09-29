@@ -1,0 +1,29 @@
+.add-city {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  input {
+    font-size: 1rem;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    border: 2px solid #c9ced2;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0.625rem 0.875rem;
+    position: relative;
+    transition: border-color .350s ease;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border: 2px solid #CFCCCF;
+    color: #687680;
+    max-width: 100%;
+    width: calc(100% - 32px);
+    box-sizing: content-box;
+    height: 1.25rem;
+    margin: 5px;
+  }
+}

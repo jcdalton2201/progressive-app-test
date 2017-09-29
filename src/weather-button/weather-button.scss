@@ -1,0 +1,11 @@
+svg {
+  background-color: #128020;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background-color: #3fc848;
+  }
+  &:active {
+    background-color: #ffdc24;
+  }
+}

@@ -7,10 +7,20 @@
     <meta name='theme-color' content="#009900">
     <link rel="manifest" href="manifest.json">
     <title>Weather APP</title>
+    <style media="screen">
+      header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: 2rem;
+      }
+    </style>
   </head>
   <body>
     <header>
-      Weather
+      <div>Weather</div>
+
     </header>
     <weather-app>
     </weather-app>
@@ -28,5 +38,6 @@
       });
     }
   </script>
+  <script src='localforage.min.js'></script>
   <script src="weather-web.js" charset="utf-8"></script>
 </html>
