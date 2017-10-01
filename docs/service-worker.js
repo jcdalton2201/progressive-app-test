@@ -88,7 +88,7 @@ workboxSW.precache([
   },
   {
     "url": "service-worker.js",
-    "revision": "932d189939bc87b32f28a8a9a025ae82"
+    "revision": "4aa608aee9abb8bb3aaf7d97fe7c14a5"
   },
   {
     "url": "weather-web.a06bcf6d614f546cca3034176e74c99bf2faf651594f7e592a666ec913363c37.js",
@@ -110,5 +110,5 @@ workboxSW.precache([
 
 workboxSW.router.registerRoute(
   'https://api.openweathermap.org/data/2.5/weather(.*)',
-  workboxSW.strategies.networkFirst(10)
+  workboxSW.strategies.networkFirst({networkTimeoutSeconds: 3})
 );
