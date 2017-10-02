@@ -7,11 +7,18 @@ class weatherCard extends HTMLElement {
   connectedCallback(){
     this._shadowRoot.innerHTML = tempHtml;
     this._header = this._shadowRoot.querySelector('.header');
+    this._city = this._shadowRoot.querySelector('.header .city');
+    this._close = this._shadowRoot.querySelector('.header .close');
     this._info = this._shadowRoot.querySelector('.info');
     this._icon = this._shadowRoot.querySelector('.icon');
     this._wind = this._shadowRoot.querySelector('.wind');
     this._humidity = this._shadowRoot.querySelector('.humidity');
     this._pressure = this._shadowRoot.querySelector('.pressure');
+    this._close.addEventListener('click',()=>{
+      this.dispatchEvent(new CustomEvent('deleteCard',{
+        detail:this
+      }));
+    });
     this.__render();
   }
   disconnectedCallback(){
@@ -63,7 +70,7 @@ class weatherCard extends HTMLElement {
   }
   __render(){
     if(this._header && this._weatherData){
-      this._header.innerHTML = this._weatherData.name;
+      this._city.innerHTML = this._weatherData.name;
       this._info.innerHTML = this._weatherData.main.temp;
       this._wind.innerHTML = `Wind: ${this._weatherData.wind.speed} - ${this.__createWindDirection(this._weatherData.wind.deg)}`;
       this._humidity.innerHTML = `Humidity: ${this._weatherData.main.humidity}%`;

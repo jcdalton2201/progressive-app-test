@@ -43,11 +43,22 @@ class weatherCardList extends HTMLElement {
     this.cities.push(city);
     window.localforage.setItem('selectedCities',this.cities);
   }
+  __removeCity(city){
+    this.cities = this.cities.filter((item)=>{
+      return item.toLowerCase() !== city.toLowerCase();
+    });
+    window.localforage.setItem('selectedCities',this.cities);
+  }
   __renderCity(city){
     this.__weatherApi.getWeather(city, true).then((data) => {
       const card = document.createElement('weather-card');
       card.weatherData = data;
       this._shadowRoot.appendChild(card);
+      card.addEventListener('deleteCard', (event)=>{
+        console.log(event.detail);
+        this.__removeCity(event.detail._weatherData.name);
+        this._shadowRoot.removeChild(event.detail);
+      });
       return card.innerText;
     });
   }
