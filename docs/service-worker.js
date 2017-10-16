@@ -1,6 +1,7 @@
 importScripts('workbox-sw.prod.v2.0.3.js');
 
 const workboxSW = new self.WorkboxSW();
+
 workboxSW.precache([
   {
     "url": "images/icons/01d.svg",
@@ -76,7 +77,7 @@ workboxSW.precache([
   },
   {
     "url": "index.html",
-    "revision": "d9be7ed50eb84d52742a5f2c54224c3d"
+    "revision": "3f2aff74aa26206775b4bd03dcfb0336"
   },
   {
     "url": "localforage.min.js",
@@ -88,15 +89,15 @@ workboxSW.precache([
   },
   {
     "url": "service-worker.js",
-    "revision": "b68dc927de16703620d313da44d58693"
+    "revision": "627bb7ff2dbfa02cea917de96c30228c"
   },
   {
-    "url": "weather-web.5dcb3f5c8c3c3ff68a6ee7e9bc02641facceb7a90cba6423179788d690532b48.js",
-    "revision": "5d4c46773004ceb09586fcacb51d12b0"
+    "url": "weather-web.73ae16d2f1dd3c9dcd1d19367681773bbd52b1bb019d671ce1d5d55991a5621b.js",
+    "revision": "0d461a97ef5b5d99724e96185ccdd9b7"
   },
   {
-    "url": "weather-web.5dcb3f5c8c3c3ff68a6ee7e9bc02641facceb7a90cba6423179788d690532b48.js.map",
-    "revision": "3948db859fb3e8818e8bc4155a65fbed"
+    "url": "weather-web.73ae16d2f1dd3c9dcd1d19367681773bbd52b1bb019d671ce1d5d55991a5621b.js.map",
+    "revision": "f57fbacca636a1fe24a5259f6c416bf6"
   },
   {
     "url": "workbox-sw.prod.v2.0.3.js",
@@ -107,8 +108,34 @@ workboxSW.precache([
     "revision": "885cfe847c003220cb276a98321c5f61"
   }
 ]);
-
-workboxSW.router.registerRoute(
+const networkFirst = workboxSW.strategies.networkFirst({
+  networkTimeoutSeconds: 3,
+  plugins: [{
+    fetchDidFail: ({originalRequest, request}) =>{
+      self.clients.matchAll().then(all =>{
+        all.map(client =>{
+          client.postMessage({
+            cache:true
+          });
+        });
+      });
+      return originalRequest;
+    },
+    requestWillFetch: ({request}) =>{
+      self.clients.matchAll().then(all =>{
+        all.map(client =>{
+          client.postMessage({
+            cache:false
+          });
+        });
+      });
+      return new Request(request);
+    }
+  }
+  ]
+});
+const router = workboxSW.router.registerRoute(
   'https://api.openweathermap.org/data/2.5/weather(.*)',
-  workboxSW.strategies.networkFirst({networkTimeoutSeconds: 3})
+  networkFirst
 );
+console.log(router);

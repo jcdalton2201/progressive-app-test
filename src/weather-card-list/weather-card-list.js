@@ -55,7 +55,6 @@ class weatherCardList extends HTMLElement {
       card.weatherData = data;
       this._shadowRoot.appendChild(card);
       card.addEventListener('deleteCard', (event)=>{
-        console.log(event.detail);
         this.__removeCity(event.detail._weatherData.name);
         this._shadowRoot.removeChild(event.detail);
       });

@@ -34,7 +34,7 @@ module.exports = {
   port: 8050,
   middleware: [
   ],
-  serveStatic: ['.temp','web'],
+  serveStatic: ['docs'],
   ghostMode: {
     clicks: true,
     scroll: true,
