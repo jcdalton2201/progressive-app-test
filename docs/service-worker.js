@@ -32,6 +32,10 @@ workboxSW.precache([
     "revision": "84844d348cafb07b6eb43b4e6b72508a"
   },
   {
+    "url": "images/icons/50d.svg",
+    "revision": "9263f89b39ab9ed6da5400af2621cd3a"
+  },
+  {
     "url": "images/icons/compass.svg",
     "revision": "efc103f529215ac3978fa44a120edf1c"
   },
@@ -77,7 +81,7 @@ workboxSW.precache([
   },
   {
     "url": "index.html",
-    "revision": "3f2aff74aa26206775b4bd03dcfb0336"
+    "revision": "92c301ab0fe45f5fc5e7d48584c39f6e"
   },
   {
     "url": "localforage.min.js",
@@ -89,15 +93,15 @@ workboxSW.precache([
   },
   {
     "url": "service-worker.js",
-    "revision": "627bb7ff2dbfa02cea917de96c30228c"
+    "revision": "3dfdf2c1a2457aa80326612b444ba265"
   },
   {
-    "url": "weather-web.73ae16d2f1dd3c9dcd1d19367681773bbd52b1bb019d671ce1d5d55991a5621b.js",
-    "revision": "0d461a97ef5b5d99724e96185ccdd9b7"
+    "url": "weather-web.e41a474f4e3b9b7788deb1335a7b470c261ff0eb35aba4ef52683a7bd35bc368.js",
+    "revision": "70636bd61975070df642ce50ba11a807"
   },
   {
-    "url": "weather-web.73ae16d2f1dd3c9dcd1d19367681773bbd52b1bb019d671ce1d5d55991a5621b.js.map",
-    "revision": "f57fbacca636a1fe24a5259f6c416bf6"
+    "url": "weather-web.e41a474f4e3b9b7788deb1335a7b470c261ff0eb35aba4ef52683a7bd35bc368.js.map",
+    "revision": "2ed1686d23c4b361dd4d53fb6635516f"
   },
   {
     "url": "workbox-sw.prod.v2.0.3.js",

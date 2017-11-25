@@ -22,6 +22,7 @@ class weatherCardList extends HTMLElement {
       });
     });
     this._shadowRoot.querySelector('weather-button').addEventListener('click',this.__addCity.bind(this));
+    this._shadowRoot.querySelector('button').addEventListener('click',this.__removeAllCities.bind(this));
   }
   disconnectedCallback(){
 
@@ -48,6 +49,9 @@ class weatherCardList extends HTMLElement {
       return item.toLowerCase() !== city.toLowerCase();
     });
     window.localforage.setItem('selectedCities',this.cities);
+  }
+  __removeAllCities(){
+    window.localforage.setItem('selectedCities',[]);
   }
   __renderCity(city){
     this.__weatherApi.getWeather(city, true).then((data) => {
